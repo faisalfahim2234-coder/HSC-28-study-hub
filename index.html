@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HSC 28 Study Hub</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f4f7fb;
+  color:#172033;
+  transition:.3s;
+}
+
+body.dark{
+  background:#111827;
+  color:#f9fafb;
+}
+
+header{
+  background:#1e40af;
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+}
+
+header h1{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:white;
+  padding:14px;
+  text-align:center;
+  box-shadow:0 2px 8px #ddd;
+}
+
+body.dark nav{
+  background:#1f2937;
+  box-shadow:none;
+}
+
+nav a{
+  text-decoration:none;
+  margin:0 10px;
+  color:#1e40af;
+  font-weight:bold;
+}
+
+body.dark nav a{
+  color:#93c5fd;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+.mode{
+  background:#2563eb;
+  color:white;
+  padding:8px 12px;
+  border-radius:7px;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:35px 20px;
+}
+
+.hero{
+  text-align:center;
+  padding:45px 15px;
+}
+
+.hero h2{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.hero p{
+  margin-bottom:20px;
+  color:#64748b;
+}
+
+body.dark .hero p{
+  color:#cbd5e1;
+}
+
+.btn{
+  background:#2563eb;
+  color:white;
+  padding:12px 20px;
+  border-radius:8px;
+}
+
+.search{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  margin:20px 0;
+  font-size:16px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #ddd;
+  text-align:center;
+  transition:.25s;
+}
+
+body.dark .card{
+  background:#1f2937;
+  box-shadow:0 3px 12px #0005;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card h3{
+  color:#2563eb;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#64748b;
+}
+
+body.dark .card p{
+  color:#cbd5e1;
+}
+
+.subject-btn{
+  margin-top:15px;
+  background:#2563eb;
+  color:white;
+  padding:10px 15px;
+  border-radius:7px;
+}
+
+.hidden{
+  display:none;
+}
+
+.chapter{
+  text-align:left;
+}
+
+.chapter button{
+  width:100%;
+  margin-top:12px;
+  padding:13px;
+  background:#eff6ff;
+  color:#1e40af;
+  border-radius:8px;
+  text-align:left;
+  font-size:15px;
+}
+
+body.dark .chapter button{
+  background:#374151;
+  color:#bfdbfe;
+}
+
+.note-box{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #ddd;
+  line-height:1.8;
+}
+
+body.dark .note-box{
+  background:#1f2937;
+  box-shadow:none;
+}
+
+.back{
+  background:#475569;
+  color:white;
+  padding:10px 18px;
+  border-radius:7px;
+  margin-bottom:20px;
+}
+
+.progress{
+  background:#e5e7eb;
+  height:12px;
+  border-radius:20px;
+  overflow:hidden;
+  margin:10px 0 20px;
+}
+
+.progress-bar{
+  background:#2563eb;
+  height:100%;
+  width:35%;
+}
+
+footer{
+  margin-top:50px;
+  background:#172554;
+  color:white;
+  text-align:center;
+  padding:25px;
+}
+
+@media(max-width:600px){
+  header h1{
+    font-size:24px;
+  }
+
+  .hero h2{
+    font-size:23px;
+  }
+
+  nav a{
+    display:inline-block;
+    margin:5px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📚 HSC 28 Study Hub</h1>
+  <p>তোমার HSC প্রস্তুতির ডিজিটাল সঙ্গী</p>
+</header>
+
+<nav>
+  <a href="#" onclick="showHome()">হোম</a>
+  <a href="#" onclick="showSubjects()">বিষয়</a>
+  <button class="mode" onclick="darkMode()">🌙 Mode</button>
+</nav>
+
+
+<!-- HOME -->
+
+<div id="home">
+
+<section class="hero">
+  <h2>HSC 2028 প্রস্তুতি শুরু হোক আজ থেকেই 🚀</h2>
+
+  <p>
+    নিয়মিত পড়াশোনা করো, নিজের লক্ষ্য ঠিক রাখো।
+  </p>
+
+  <button class="btn" onclick="showSubjects()">
+    📚 বিষয় দেখুন
+  </button>
+</section>
+
+<div class="container">
+
+<h2>📊 আমার পড়াশোনার অগ্রগতি</h2>
+
+<div class="progress">
+  <div class="progress-bar"></div>
+</div>
+
+<p>35% সম্পন্ন</p>
+
+</div>
+
+</div>
+
+
+<!-- SUBJECTS -->
+
+<div id="subjects" class="container hidden">
+
+<h2>📚 সকল বিষয়</h2>
+
+<input
+  class="search"
+  id="search"
+  placeholder="🔎 বিষয় খুঁজুন..."
+  onkeyup="searchSubject()"
+>
+
+<div class="cards">
+
+<div class="card subject">
+<h3>🧪 রসায়ন</h3>
+<p>অধ্যায়ভিত্তিক নোট</p>
+<button class="subject-btn"
+onclick="openChemistry()">
+দেখুন →
+</button>
+</div>
+
+<div class="card subject">
+<h3>📐 উচ্চতর গণিত</h3>
+<p>সূত্র ও সমস্যা সমাধান</p>
+<button class="subject-btn"
+onclick="openMath()">
+দেখুন →
+</button>
+</div>
+
+<div class="card subject">
+<h3>⚡ পদার্থবিজ্ঞান</h3>
+<p>Concept ও Formula</p>
+<button class="subject-btn">
+শীঘ্রই আসছে
+</button>
+</div>
+
+<div class="card subject">
+<h3>🧬 জীববিজ্ঞান</h3>
+<p>নোট ও চিত্র</p>
+<button class="subject-btn">
+শীঘ্রই আসছে
+</button>
+</div>
+
+<div class="card subject">
+<h3>🇬🇧 ইংরেজি</h3>
+<p>Grammar ও Writing</p>
+<button class="subject-btn">
+শীঘ্রই আসছে
+</button>
+</div>
+
+<div class="card subject">
+<h3>🇧🇩 বাংলা</h3>
+<p>সাহিত্য ও ব্যাকরণ</p>
+<button class="subject-btn">
+শীঘ্রই আসছে
+</button>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CHEMISTRY -->
+
+<div id="chemistry" class="container hidden">
+
+<button class="back" onclick="showSubjects()">
+⬅️ ফিরে যান
+</button>
+
+<h2>🧪 রসায়ন</h2>
+
+<div class="cards">
+
+<div class="card chapter">
+<h3>অধ্যায় ১</h3>
+<p>ল্যাবরেটরির নিরাপদ ব্যবহার</p>
+
+<button onclick="showNote('chem1')">
+📝 নোট দেখুন
+</button>
+</div>
+
+<div class="card chapter">
+<h3>অধ্যায় ২</h3>
+<p>গুণগত রসায়ন</p>
+
+<button onclick="showNote('chem2')">
+📝 নোট দেখুন
+</button>
+</div>
+
+<div class="card chapter">
+<h3>অধ্যায় ৩</h3>
+<p>মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন</p>
+
+<button onclick="showNote('chem3')">
+📝 নোট দেখুন
+</button>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MATH -->
+
+<div id="math" class="container hidden">
+
+<button class="back" onclick="showSubjects()">
+⬅️ ফিরে যান
+</button>
+
+<h2>📐 উচ্চতর গণিত</h2>
+
+<div class="cards">
+
+<div class="card chapter">
+<h3>Matrix</h3>
+<p>Matrix-এর মৌলিক ধারণা</p>
+
+<button onclick="showNote('matrix')">
+📝 নোট দেখুন
+</button>
+</div>
+
+<div class="card chapter">
+<h3>Vector</h3>
+<p>Vector-এর মৌলিক ধারণা</p>
+
+<button onclick="showNote('vector')">
+📝 নোট দেখুন
+</button>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- NOTE -->
+
+<div id="note" class="container hidden">
+
+<button class="back" onclick="showSubjects()">
+⬅️ ফিরে যান
+</button>
+
+<div class="note-box" id="noteContent">
+</div>
+
+</div>
+
+
+<footer>
+<p>© 2026 HSC 28 Study Hub</p>
+<p>Made with ❤️ for HSC 28</p>
+</footer>
+
+
+<script>
+
+function hideAll(){
+
+document.getElementById("home")
+.classList.add("hidden");
+
+document.getElementById("subjects")
+.classList.add("hidden");
+
+document.getElementById("chemistry")
+.classList.add("hidden");
+
+document.getElementById("math")
+.classList.add("hidden");
+
+document.getElementById("note")
+.classList.add("hidden");
+
+}
+
+
+function showHome(){
+
+hideAll();
+
+document.getElementById("home")
+.classList.remove("hidden");
+
+}
+
+
+function showSubjects(){
+
+hideAll();
+
+document.getElementById("subjects")
+.classList.remove("hidden");
+
+}
+
+
+function openChemistry(){
+
+hideAll();
+
+document.getElementById("chemistry")
+.classList.remove("hidden");
+
+}
+
+
+function openMath(){
+
+hideAll();
+
+document.getElementById("math")
+.classList.remove("hidden");
+
+}
+
+
+function showNote(type){
+
+hideAll();
+
+document.getElementById("note")
+.classList.remove("hidden");
+
+let content="";
+
+if(type==="chem1"){
+
+content=`
+<h2>🧪 রসায়ন — অধ্যায় ১</h2>
+<br>
+<h3>ল্যাবরেটরি নিরাপত্তা</h3>
+<p>
+রসায়ন পরীক্ষাগারে কাজ করার সময় নিরাপত্তা বিধি মেনে চলা অত্যন্ত গুরুত্বপূর্ণ।
+</p>
+<br>
+<h3>📌 গুরুত্বপূর্ণ বিষয়</h3>
+<p>
+• রাসায়নিক পদার্থ ব্যবহারে সতর্কতা।<br>
+• প্রয়োজনীয় নিরাপত্তা সরঞ্জাম ব্যবহার।<br>
+• পরীক্ষাগারের নির্দেশনা মেনে চলা।
+</p>
+`;
+
+}
+
+else if(type==="chem2"){
+
+content=`
+<h2>🧪 রসায়ন — অধ্যায় ২</h2>
+<br>
+<h3>গুণগত রসায়ন</h3>
+<p>
+বিভিন্ন আয়ন ও যৌগ শনাক্তকরণ এবং তাদের বৈশিষ্ট্য নিয়ে এই অধ্যায়ে আলোচনা করা হয়।
+</p>
+<br>
+<h3>📌 Revision</h3>
+<p>
+গুরুত্বপূর্ণ বিক্রিয়া, শনাক্তকরণ পরীক্ষা এবং প্রয়োজনীয় ধারণাগুলো নিয়মিত অনুশীলন করো।
+</p>
+`;
+
+}
+
+else if(type==="chem3"){
+
+content=`
+<h2>🧪 রসায়ন — অধ্যায় ৩</h2>
+<br>
+<h3>পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন</h3>
+<p>
+মৌলের পর্যায়বৃত্ত বৈশিষ্ট্য এবং বিভিন্ন ধরনের রাসায়নিক বন্ধনের ধারণা এই অংশের গুরুত্বপূর্ণ বিষয়।
+</p>
+`;
+
+}
+
+else if(type==="matrix"){
+
+content=`
+<h2>📐 উচ্চতর গণিত — Matrix</h2>
+<br>
+<h3>Matrix কী?</h3>
+<p>
+সারি ও কলামে সাজানো সংখ্যাগুলোর আয়তাকার বিন্যাসকে Matrix বলা হয়।
+</p>
+<br>
+<h3>📌 গুরুত্বপূর্ণ বিষয়</h3>
+<p>
+• Matrix-এর order<br>
+• Addition ও subtraction<br>
+• Matrix multiplication<br>
+• Determinant
+</p>
+`;
+
+}
+
+else if(type==="vector"){
+
+content=`
+<h2>📐 উচ্চতর গণিত — Vector</h2>
+<br>
+<h3>Vector কী?</h3>
+<p>
+যে রাশির মান ও দিক উভয়ই থাকে তাকে Vector রাশি বলা হয়।
+</p>
+<br>
+<h3>📌 গুরুত্বপূর্ণ বিষয়</h3>
+<p>
+• Vector representation<br>
+• Addition of vectors<br>
+• Scalar multiplication<br>
+• Unit vector
+</p>
+`;
+
+}
+
+document.getElementById("noteContent").innerHTML=content;
+
+}
+
+
+function darkMode(){
+
+document.body.classList.toggle("dark");
+
+}
+
+
+function searchSubject(){
+
+let input=
+document.getElementById("search")
+.value.toLowerCase();
+
+let subjects=
+document.querySelectorAll(".subject");
+
+subjects.forEach(function(subject){
+
+let text=
+subject.innerText.toLowerCase();
+
+subject.style.display=
+text.includes(input) ? "block" : "none";
+
+});
+
+}
+
+</script>
+
+</body>
+  </html>
